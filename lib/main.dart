@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:splashscreen/splashscreen.dart';
 import 'register.dart';
 import 'signin.dart';
 //Splash screen changed in android/app/src/main/res/drawable -  android
@@ -12,6 +13,27 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new SplashScreen(
+        seconds: 3,
+        navigateAfterSeconds: new Main(),
+        title: new Text('fortyfive',
+          style: new TextStyle(
+            fontFamily: 'Roboto Slab',
+              fontWeight: FontWeight.bold,
+              fontSize: 40,
+              color: Colors.white30
+          ),
+        ),
+        backgroundColor: Colors.black,
+        loaderColor: Colors.white30,
+    );
+  }
+}
+
+class Main extends StatelessWidget {
+
   Builder userStatus(String status) {
     return Builder(
       builder: (context) => FlatButton(
@@ -36,11 +58,12 @@ class MyApp extends StatelessWidget {
                 padding: const EdgeInsets.all(10.0),
                 child: ListTile(
                   title: Center(child: Text(
-                      status,
-                      style: TextStyle(
+                    status,
+                    style: TextStyle(
+                        fontFamily: 'Roboto Slab',
                         color: Colors.white,
                         fontSize: 24
-                      ),
+                    ),
                   )),
                 )
             )
@@ -48,31 +71,33 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
-      return MaterialApp(
-          home: Scaffold(
+    return MaterialApp(
+        home: Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.black,
               title: Text(
                 'fortyfive',
                 style: TextStyle(
-                  fontSize: 24,
-                  color: Colors.white
+                    fontFamily: 'Roboto Slab',
+                    fontSize: 24,
+                    color: Colors.white
                 ),
               ),
             ),
             backgroundColor: Colors.black,
             body: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  userStatus('REGISTER'),
-                  userStatus('SIGN IN')
-                ],
-              )
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    userStatus('REGISTER'),
+                    userStatus('SIGN IN')
+                  ],
+                )
             )
-          )
-      );
+        )
+    );
   }
 }

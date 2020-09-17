@@ -15,6 +15,7 @@ class _SignInState extends State<SignIn> {
             primaryColorDark: Colors.white
         ), child: new TextField(
           style: TextStyle(
+              fontFamily: 'Roboto Slab',
               color: Colors.white
           ),
           obscureText: obscurity,
@@ -25,7 +26,8 @@ class _SignInState extends State<SignIn> {
             ),
             labelText: inp,
             labelStyle: TextStyle(
-                color: Colors.white30
+                color: Colors.white30,
+                fontFamily: 'Roboto Slab'
             ),
           ),
         ))
@@ -38,6 +40,7 @@ class _SignInState extends State<SignIn> {
       child: Text(
         name,
         style: TextStyle(
+            fontFamily: 'Roboto Slab',
             color: Colors.white,
             fontSize: 24
         ),
@@ -74,6 +77,7 @@ class _SignInState extends State<SignIn> {
                     child: Text(
                       'SUBMIT',
                       style: TextStyle(
+                          fontFamily: 'Roboto Slab',
                           color: Colors.white,
                           fontSize: 24
                       ),

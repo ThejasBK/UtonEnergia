@@ -15,6 +15,7 @@ class _RegisterState extends State<Register> {
             primaryColorDark: Colors.white
         ), child: new TextField(
           style: TextStyle(
+              fontFamily: 'Roboto Slab',
               color: Colors.white
           ),
           obscureText: obscurity,
@@ -25,6 +26,7 @@ class _RegisterState extends State<Register> {
             ),
             labelText: inp,
             labelStyle: TextStyle(
+                fontFamily: 'Roboto Slab',
                 color: Colors.white30
             ),
           ),
@@ -38,6 +40,7 @@ class _RegisterState extends State<Register> {
       child: Text(
         name,
         style: TextStyle(
+            fontFamily: 'Roboto Slab',
             color: Colors.white,
             fontSize: 24
         ),
@@ -74,6 +77,7 @@ class _RegisterState extends State<Register> {
                     child: Text(
                       'SUBMIT',
                       style: TextStyle(
+                          fontFamily: 'Roboto Slab',
                           color: Colors.white,
                           fontSize: 24
                       ),
