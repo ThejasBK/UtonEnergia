@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
   Builder userStatus(String status) {
     return Builder(
       builder: (context) => FlatButton(
+        splashColor: Colors.white30,
         onPressed: () {
           if(status == 'REGISTER')
             Navigator.push(context,
