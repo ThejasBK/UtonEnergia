@@ -62,7 +62,11 @@ class _RegisterState extends State<Register> {
               children: <Widget>[
                 inputLabel('USERNAME'),
                 input('USERNAME', false),
+                inputLabel("EMAIL"),
+                input('E-mail', false),
                 inputLabel("PASSWORD"),
+                input('PASSWORD', true),
+                inputLabel("CONFIRM PASSWORD"),
                 input('PASSWORD', true),
                 Container(
                   width: MediaQuery.of(context).size.width * 1,
