@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'register.dart';
 //Splash screen changed in android/app/src/main/res/drawable -  android
 //Splash screen changed in ios/Runner/Assets.xcassets/launchImage.imageset - iOS
 void main() {
@@ -13,9 +13,13 @@ void main() {
 class MyApp extends StatelessWidget {
   final username = TextEditingController();
   final password = TextEditingController();
-  Color hexToColor(String code) {
-    return new Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
-  }
+  final stadiumBorder = StadiumBorder(
+    side: BorderSide(color: Colors.red),
+  );
+  final roundedShape = RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(16),
+    side: BorderSide(color: Colors.red),
+  );
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -35,6 +39,7 @@ class MyApp extends StatelessWidget {
                 ),
                 Container(
                     margin: EdgeInsets.all(10),
+                    //width: MediaQuery.of(context).size.width * 0.8,
                     child: TextField(
                       obscureText: false,
                       style: TextStyle(
@@ -58,6 +63,7 @@ class MyApp extends StatelessWidget {
                 ),
                 Container(
                     margin: EdgeInsets.all(10),
+                    //width: MediaQuery.of(context).size.width * 0.8,
                     child: TextField(
                       style: TextStyle(
                           color: Colors.white
@@ -72,8 +78,23 @@ class MyApp extends StatelessWidget {
                     ),
                   )
                 ),
-                RaisedButton(
-                  child: Text('SUBMIT'),
+                Container(
+                  margin: EdgeInsets.all(10),
+                  width: MediaQuery.of(context).size.width * 0.3,
+                  child: RaisedButton(
+                    onPressed: () {
+                      print('Hello');
+                    },
+                    color: Colors.black,
+                    child: Text(
+                        'SUBMIT',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24
+                        ),
+                    ),
+                    splashColor: Colors.white30,
+                  ),
                 )
               ],
             ),
