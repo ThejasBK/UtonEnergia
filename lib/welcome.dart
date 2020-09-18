@@ -7,6 +7,66 @@ class Welcome extends StatefulWidget {
 }
 
 class _WelcomeState extends State<Welcome> {
+  Container button(String task) {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.4,
+      height: 50,
+      child: RaisedButton(
+        onPressed: () {
+          print('Hello');
+        },
+        color: Colors.white30,
+        child: Text(
+          task,
+          style: TextStyle(
+              fontFamily: 'Roboto Slab',
+              color: Colors.white,
+              fontSize: 24
+          ),
+        ),
+        splashColor: Colors.white30,
+      ),
+    );
+  }
+
+  void _showDialog() {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: Card(
+              color: Colors.black,
+              child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: ListTile(
+                    title: Center(child: Text(
+                      'fortyfive services',
+                      style: TextStyle(
+                          fontFamily: 'Roboto Slab',
+                          color: Colors.white,
+                          fontSize: 24
+                      ),
+                    )),
+                  )
+              )
+          ),
+          backgroundColor: Colors.black,
+          content: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              button('TPMS'),
+              button('Battery'),
+              button('Diagnosis'),
+              button('Service'),
+              button('X')
+            ],
+          ),
+        );
+      },
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,11 +99,9 @@ class _WelcomeState extends State<Welcome> {
                   builder: (context) => FlatButton(
                     splashColor: Colors.white30,
                     onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(
-                                builder: (context) => Register()
-                            )
-                        );
+                      setState(() {
+                        _showDialog();
+                      });
                     },
                     child: Card(
                         color: Colors.black,
