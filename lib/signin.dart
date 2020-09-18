@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'welcome.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -71,7 +72,11 @@ class _SignInState extends State<SignIn> {
                   width: MediaQuery.of(context).size.width * 1,
                   child: RaisedButton(
                     onPressed: () {
-                      print('Hello');
+                      Navigator.push(context,
+                          MaterialPageRoute(
+                              builder: (context) => Welcome()
+                          )
+                      );
                     },
                     color: Colors.black,
                     child: Text(

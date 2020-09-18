@@ -33,7 +33,6 @@ class MyApp extends StatelessWidget {
 }
 
 class Main extends StatelessWidget {
-
   Builder userStatus(String status) {
     return Builder(
       builder: (context) => FlatButton(
