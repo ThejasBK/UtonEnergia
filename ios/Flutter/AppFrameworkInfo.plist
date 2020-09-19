@@ -22,5 +22,20 @@
   <string>1.0</string>
   <key>MinimumOSVersion</key>
   <string>8.0</string>
+
+  <key>NSBluetoothAlwaysUsageDescription</key>
+  <string>Need BLE permission</string>
+
+  <key>NSBluetoothPeripheralUsageDescription</key>
+  <string>Need BLE permission</string>
+
+  <key>NSLocationAlwaysAndWhenInUsageDescription</key>
+  <string>Need Location permission</string>
+
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string>Need Location permission</string>
+
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>Need Location permission</string>
 </dict>
 </plist>

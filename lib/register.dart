@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'bluetooth.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -71,7 +72,11 @@ class _RegisterState extends State<Register> {
                   width: MediaQuery.of(context).size.width * 1,
                   child: RaisedButton(
                     onPressed: () {
-                      print('Hello');
+                      Navigator.push(context,
+                          MaterialPageRoute(
+                              builder: (context) => MyApp()
+                          )
+                      );
                     },
                     color: Colors.black,
                     child: Text(
