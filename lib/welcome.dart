@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'register.dart';
 import 'battery.dart';
+import 'tpms.dart';
+import 'diagnosis.dart';
+import 'service.dart';
 
 class Welcome extends StatefulWidget {
   @override
@@ -15,11 +17,30 @@ class _WelcomeState extends State<Welcome> {
       child: RaisedButton(
         onPressed: () {
           Navigator.of(context, rootNavigator: true).pop('_showDialog');
-          Navigator.push(context,
-              MaterialPageRoute(
-              builder: (context) => Battery()
-            )
-          );
+          if(task == 'Battery')
+            Navigator.push(context,
+                MaterialPageRoute(
+                builder: (context) => Battery()
+              )
+            );
+          else if(task == 'TPMS')
+            Navigator.push(context,
+                MaterialPageRoute(
+                    builder: (context) => Tpms()
+                )
+            );
+          else if(task == 'Diagnosis')
+            Navigator.push(context,
+                MaterialPageRoute(
+                    builder: (context) => Diagnosis()
+                )
+            );
+          else
+            Navigator.push(context,
+                MaterialPageRoute(
+                    builder: (context) => Service()
+                )
+            );
         },
         color: Colors.white30,
         child: Text(
