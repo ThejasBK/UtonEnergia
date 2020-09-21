@@ -50,6 +50,8 @@ flutter:
      - family: Roboto Slab
        fonts:
        - asset: fonts/RobotoSlab-VariableFont_wght.ttf
+  assets:
+    - images/
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

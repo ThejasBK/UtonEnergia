@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'register.dart';
+import 'battery.dart';
 
 class Welcome extends StatefulWidget {
   @override
@@ -13,7 +14,12 @@ class _WelcomeState extends State<Welcome> {
       height: 50,
       child: RaisedButton(
         onPressed: () {
-          print('Hello');
+          Navigator.of(context, rootNavigator: true).pop('_showDialog');
+          Navigator.push(context,
+              MaterialPageRoute(
+              builder: (context) => Battery()
+            )
+          );
         },
         color: Colors.white30,
         child: Text(
@@ -67,6 +73,8 @@ class _WelcomeState extends State<Welcome> {
       },
     );
   }
+  //Image.asset('images/full_vehicle.jpg'),
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
