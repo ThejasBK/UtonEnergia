@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'welcome.dart';
+import 'intro.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -74,7 +75,7 @@ class _SignInState extends State<SignIn> {
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(
-                              builder: (context) => Welcome()
+                              builder: (context) => Introduction()
                           )
                       );
                     },

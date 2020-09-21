@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
@@ -10,14 +8,14 @@ class Diagnosis extends StatefulWidget {
 }
 
 class _DiagnosisState extends State<Diagnosis> {
-  File _image;
+  //File _image;
   final picker = ImagePicker();
 
   Future getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.camera);
 
     setState(() {
-      _image = File(pickedFile.path);
+     // _image = File(pickedFile.path);
     });
   }
   @override
@@ -26,7 +24,7 @@ class _DiagnosisState extends State<Diagnosis> {
       home: SafeArea(
         child: Scaffold(
           body:new Center(
-            child: Image.file(_image)
+            //child: Image.file(_image)
           ),
         ),
       ),

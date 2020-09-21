@@ -28,7 +28,7 @@ class _TpmsState extends State<Tpms> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    child: Image.asset('images/full_vehicle.jpg'),
+                    child: Image.asset('images/tyre.jpg'),
                     width: MediaQuery.of(context).size.width,
                   ),
                   Container(
@@ -48,14 +48,14 @@ class _TpmsState extends State<Tpms> {
                               child: Column(
                                 children: <Widget>[
                                   Text(
-                                    'Range',
+                                    'Front',
                                     style: TextStyle(
                                         fontSize: 20,
                                         color: Colors.black45
                                     ),
                                   ),
                                   Text(
-                                    '60 Kms',
+                                    '30 psi',
                                     style: TextStyle(
                                         fontSize: 22,
                                         color: Colors.black
@@ -68,14 +68,14 @@ class _TpmsState extends State<Tpms> {
                               padding: EdgeInsets.all(8),
                               child: Column(
                                 children: <Widget>[
-                                  Text('Battery',
+                                  Text('Back',
                                     style: TextStyle(
                                         fontSize: 20,
                                         color: Colors.black45
                                     ),
                                   ),
                                   Text(
-                                    '90 %',
+                                    '20 psi',
                                     style: TextStyle(
                                         fontSize: 22,
                                         color: Colors.black
@@ -85,27 +85,6 @@ class _TpmsState extends State<Tpms> {
                               ),
                             )
                           ],
-                        ),
-                        Container(
-                          padding: EdgeInsets.all(8),
-                          child: Column(
-                            children: <Widget>[
-                              Text(
-                                'Battery health',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.black45
-                                ),
-                              ),
-                              Text(
-                                '97 %',
-                                style: TextStyle(
-                                    fontSize: 22,
-                                    color: Colors.black
-                                ),
-                              )
-                            ],
-                          ),
                         ),
                       ],
                     ),
