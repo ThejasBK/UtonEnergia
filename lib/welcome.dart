@@ -34,7 +34,7 @@ class _WelcomeState extends State<Welcome> {
           else if(task == 'Diagnosis')
             Navigator.push(context,
                 MaterialPageRoute(
-                    builder: (context) => Diagnosis()
+                    builder: (context) => MyApp()
                 )
             );
           else if(task == 'X')
