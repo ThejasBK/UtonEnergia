@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'bluetooth.dart';
-
+import 'welcome.dart';
 class Register extends StatefulWidget {
   @override
   _RegisterState createState() => _RegisterState();
@@ -55,42 +54,45 @@ class _RegisterState extends State<Register> {
       home: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.black,
-          body: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                inputLabel('USERNAME'),
-                input('USERNAME', false),
-                inputLabel("EMAIL"),
-                input('E-mail', false),
-                inputLabel("PASSWORD"),
-                input('PASSWORD', true),
-                inputLabel("CONFIRM PASSWORD"),
-                input('PASSWORD', true),
-                Container(
-                  width: MediaQuery.of(context).size.width * 1,
-                  child: RaisedButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(
-                              builder: (context) => MyApp()
-                          )
-                      );
-                    },
-                    color: Colors.black,
-                    child: Text(
-                      'SUBMIT',
-                      style: TextStyle(
-                          fontFamily: 'Roboto Slab',
-                          color: Colors.white,
-                          fontSize: 24
+          body: SingleChildScrollView(
+            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
+            child: Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  inputLabel('USERNAME'),
+                  input('USERNAME', false),
+                  inputLabel("EMAIL"),
+                  input('E-mail', false),
+                  inputLabel("PASSWORD"),
+                  input('PASSWORD', true),
+                  inputLabel("CONFIRM PASSWORD"),
+                  input('PASSWORD', true),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 1,
+                    child: RaisedButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(
+                                builder: (context) => Welcome()
+                            )
+                        );
+                      },
+                      color: Colors.black,
+                      child: Text(
+                        'SUBMIT',
+                        style: TextStyle(
+                            fontFamily: 'Roboto Slab',
+                            color: Colors.white,
+                            fontSize: 24
+                        ),
                       ),
+                      splashColor: Colors.white30,
                     ),
-                    splashColor: Colors.white30,
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           ),
         ),

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'battery.dart';
+import 'tpms.dart';
+import 'diagnosis.dart';
+import 'service.dart';
 import 'welcome.dart';
 
 class Overview extends StatefulWidget {
@@ -7,6 +11,61 @@ class Overview extends StatefulWidget {
 }
 
 class _OverviewState extends State<Overview> {
+
+  Container button(String task) {
+    return Container(
+      width: MediaQuery
+          .of(context)
+          .size
+          .width * 0.4,
+      height: 50,
+      child: RaisedButton(
+        onPressed: () {
+          Navigator.of(context, rootNavigator: true).pop('_showDialog');
+          if (task == 'Battery')
+            Navigator.push(context,
+                MaterialPageRoute(
+                    builder: (context) => Battery()
+                )
+            );
+          else if (task == 'TPMS')
+            Navigator.push(context,
+                MaterialPageRoute(
+                    builder: (context) => Tpms()
+                )
+            );
+          else if (task == 'Diagnosis')
+            Navigator.push(context,
+                MaterialPageRoute(
+                    builder: (context) => MyApp()
+                )
+            );
+          else if (task == 'X')
+            Navigator.push(context,
+                MaterialPageRoute(
+                    builder: (context) => Welcome()
+                )
+            );
+          else
+            Navigator.push(context,
+                MaterialPageRoute(
+                    builder: (context) => Service()
+                )
+            );
+        },
+        color: Colors.white30,
+        child: Text(
+          task,
+          style: TextStyle(
+              fontFamily: 'Roboto Slab',
+              color: Colors.white,
+              fontSize: 24
+          ),
+        ),
+        splashColor: Colors.white30,
+      ),
+    );
+  }
 
   Row tableContent(String name, String value) {
     return Row(
@@ -86,7 +145,35 @@ class _OverviewState extends State<Overview> {
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(
-                              builder: (context) => Welcome()
+                              builder: (context) => AlertDialog(
+                                title: Card(
+                                    color: Colors.black,
+                                    child: Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: ListTile(
+                                          title: Center(child: Text(
+                                            'fortyfive services',
+                                            style: TextStyle(
+                                                fontFamily: 'Roboto Slab',
+                                                color: Colors.white,
+                                                fontSize: 24
+                                            ),
+                                          )),
+                                        )
+                                    )
+                                ),
+                                backgroundColor: Colors.black,
+                                content: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    button('TPMS'),
+                                    button('Battery'),
+                                    button('Diagnosis'),
+                                    button('Service'),
+                                    button('X')
+                                  ],
+                                ),
+                              )
                           )
                       );
                     },
