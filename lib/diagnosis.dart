@@ -1,10 +1,7 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'dart:async';
-
 import 'package:darwin_camera/darwin_camera.dart';
-
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -16,21 +13,15 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
-
   @override
   void initState() {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Darwin Camera Plugin'),
-        ),
         body: DarwinCameraTutorial(),
       ),
     );
@@ -51,40 +42,33 @@ class _DarwinCameraTutorialState extends State<DarwinCameraTutorial> {
   @override
   void initState() {
     super.initState();
-
     isImageCaptured = false;
   }
 
+
   openCamera(BuildContext context) async {
     PermissionHandler permissionHandler = PermissionHandler();
-
     await checkForPermissionBasedOnPermissionGroup(
       permissionHandler,
       PermissionGroup.camera,
     );
 
-    ///
-    /// Microphone permission is required for android devices.
-    /// if permission isn't given before opening camera.
-    /// The app will crash.
-    ///
-    /// For iOS devices, it's not neccessary. You can skip microphone permission.
-    /// Required for android devices.
     await checkForPermissionBasedOnPermissionGroup(
       permissionHandler,
       PermissionGroup.microphone,
     );
 
-    ///
     String filePath = await FileUtils.getDefaultFilePath();
     String uuid = DateTime.now().millisecondsSinceEpoch.toString();
 
-    ///
     filePath = '$filePath/$uuid.png';
 
     List<CameraDescription> cameraDescription = await availableCameras();
 
-    ////
+    Directory appDocDir = await getApplicationDocumentsDirectory();
+    String appDocPath = appDocDir.path;
+    filePath = '$appDocPath/$uuid.png';
+
     DarwinCameraResult result = await Navigator.push(
       context,
       MaterialPageRoute(
@@ -98,8 +82,6 @@ class _DarwinCameraTutorialState extends State<DarwinCameraTutorial> {
       ),
     );
 
-    ///
-    ///
     if (result != null && result.isFileAvailable) {
       setState(() {
         isImageCaptured = true;
@@ -107,9 +89,8 @@ class _DarwinCameraTutorialState extends State<DarwinCameraTutorial> {
       });
       print(result.file);
       print(result.file.path);
+      print(appDocPath);
     }
-
-    ///
   }
 
   @override
