@@ -45,7 +45,6 @@ class _DarwinCameraTutorialState extends State<DarwinCameraTutorial> {
     isImageCaptured = false;
   }
 
-
   openCamera(BuildContext context) async {
     PermissionHandler permissionHandler = PermissionHandler();
     await checkForPermissionBasedOnPermissionGroup(
@@ -67,7 +66,10 @@ class _DarwinCameraTutorialState extends State<DarwinCameraTutorial> {
 
     Directory appDocDir = await getApplicationDocumentsDirectory();
     String appDocPath = appDocDir.path;
-    filePath = '$appDocPath/$uuid.png';
+
+    Directory tempDir = await getTemporaryDirectory();
+    String tempPath = tempDir.path;
+    //filePath = '$appDocPath/$uuid.png';
 
     DarwinCameraResult result = await Navigator.push(
       context,
@@ -89,7 +91,7 @@ class _DarwinCameraTutorialState extends State<DarwinCameraTutorial> {
       });
       print(result.file);
       print(result.file.path);
-      print(appDocPath);
+      print(tempPath.toString());
     }
   }
 
@@ -158,9 +160,6 @@ Future<bool> checkForPermissionBasedOnPermissionGroup(
     // takeImageFromCameraAndSave();
     return true;
   } else {
-    ///
-    /// ASK USER TO GO TO SETTINGS TO GIVE PERMISSION;
-
     return false;
   }
 }
@@ -169,8 +168,8 @@ class FileUtils {
   static Future<String> getDefaultFilePath() async {
     try {
       Directory appDocDir = await getApplicationDocumentsDirectory();
-      String mediaDirectory = appDocDir.path + "/media";
-      Directory(mediaDirectory).create(recursive: true);
+      String mediaDirectory = appDocDir.path + "/images";
+      //Directory(mediaDirectory).create(recursive: true);
       return mediaDirectory;
     } catch (error, stacktrace) {
       print('could not create folder for media assets');
