@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:utonenergia/overview.dart';
 import 'battery.dart';
 import 'tpms.dart';
 import 'diagnosis.dart';
 import 'service.dart';
+import 'overview.dart';
 
 class Welcome extends StatefulWidget {
   @override
@@ -33,6 +35,12 @@ class _WelcomeState extends State<Welcome> {
             Navigator.push(context,
                 MaterialPageRoute(
                     builder: (context) => Diagnosis()
+                )
+            );
+          else if(task == 'X')
+            Navigator.push(context,
+                MaterialPageRoute(
+                    builder: (context) => Overview()
                 )
             );
           else
