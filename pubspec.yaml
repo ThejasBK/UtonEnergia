@@ -23,8 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_blue: ^0.7.2
-
+  #flutter_blue: ^0.7.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -34,10 +33,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   splashscreen:
-  darwin_camera:
-    git: https://github.com/atlanhq/darwin-camera
-  permission_handler: ^3.3.0
-  path_provider: ^0.5.0+1
+  #camera: 0.5.8+6
+  #simple_permissions: ^0.1.9
 
 
 # For information on the generic Dart part of this file, see the
