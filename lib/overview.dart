@@ -37,7 +37,7 @@ class _OverviewState extends State<Overview> {
           else if (task == 'Diagnosis')
             Navigator.push(context,
                 MaterialPageRoute(
-                    builder: (context) => MyApp()
+                    builder: (context) => Diagnosis()
                 )
             );
           else if (task == 'X')
@@ -86,6 +86,45 @@ class _OverviewState extends State<Overview> {
           ),
         )
       ],
+    );
+  }
+
+  void _showDialog() {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: Card(
+              color: Colors.black,
+              child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: ListTile(
+                    title: Center(child: Text(
+                      'fortyfive services',
+                      style: TextStyle(
+                          fontFamily: 'Roboto Slab',
+                          color: Colors.white,
+                          fontSize: 24
+                      ),
+                    )),
+                  )
+              )
+          ),
+          backgroundColor: Colors.black,
+          content: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              button('TPMS'),
+              button('Battery'),
+              button('Diagnosis'),
+              button('Service'),
+              button('X')
+            ],
+          ),
+        );
+      },
     );
   }
 
@@ -143,39 +182,7 @@ class _OverviewState extends State<Overview> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(
-                              builder: (context) => AlertDialog(
-                                title: Card(
-                                    color: Colors.black,
-                                    child: Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: ListTile(
-                                          title: Center(child: Text(
-                                            'fortyfive services',
-                                            style: TextStyle(
-                                                fontFamily: 'Roboto Slab',
-                                                color: Colors.white,
-                                                fontSize: 24
-                                            ),
-                                          )),
-                                        )
-                                    )
-                                ),
-                                backgroundColor: Colors.black,
-                                content: Column(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  children: <Widget>[
-                                    button('TPMS'),
-                                    button('Battery'),
-                                    button('Diagnosis'),
-                                    button('Service'),
-                                    button('X')
-                                  ],
-                                ),
-                              )
-                          )
-                      );
+                      _showDialog();
                     },
                   ),
                 )
