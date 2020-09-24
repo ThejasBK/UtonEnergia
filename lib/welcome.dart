@@ -42,32 +42,35 @@ class _WelcomeState extends State<Welcome> {
                   ),
                 ),
                 Builder(
-                  builder: (context) => FlatButton(
-                    splashColor: Colors.white30,
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(
-                              builder: (context) => Overview()
-                          )
-                      );
-                    },
-                    child: Card(
-                        color: Colors.black,
-                        child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: ListTile(
-                              title: Center(child: Text(
-                                'STATUS',
-                                style: TextStyle(
-                                    fontFamily: 'Roboto Slab',
-                                    color: Colors.white,
-                                    fontSize: 24
-                                ),
-                              )),
+                  builder: (context) => Opacity(
+                    opacity: 0.0,
+                    child:  FlatButton(
+                      splashColor: Colors.white30,
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(
+                                builder: (context) => Overview()
                             )
-                        )
+                        );
+                      },
+                      child: Card(
+                          color: Colors.black,
+                          child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: ListTile(
+                                title: Center(child: Text(
+                                  'STATUS',
+                                  style: TextStyle(
+                                      fontFamily: 'Roboto Slab',
+                                      color: Colors.white,
+                                      fontSize: 24
+                                  ),
+                                )),
+                              )
+                          )
+                      ),
                     ),
-                  ),
+                  )
                 )
               ],
             ),
