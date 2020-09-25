@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 
+//Opening camera. Need to work on processing
 
 class Diagnosis extends StatefulWidget {
   @override
