@@ -54,7 +54,7 @@ class _WelcomeState extends State<Welcome> {
                         );
                       },
                       child: Card(
-                          color: Colors.black,
+                          color: Colors.white,
                           child: Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: ListTile(
