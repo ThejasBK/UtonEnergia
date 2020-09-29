@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:utonenergia/overview.dart';
 import 'overview.dart';
+import 'basic_info.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -75,7 +76,7 @@ class _SignInState extends State<SignIn> {
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(
-                              builder: (context) => Overview()
+                              builder: (context) => BasicInformation()
                           )
                       );
                     },

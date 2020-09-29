@@ -4,7 +4,7 @@ import 'battery.dart';
 import 'tpms.dart';
 import 'diagnosis.dart';
 import 'service.dart';
-import 'overview.dart';
+import 'basic_info.dart';
 
 class Welcome extends StatefulWidget {
   @override
@@ -49,7 +49,7 @@ class _WelcomeState extends State<Welcome> {
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(
-                                builder: (context) => Overview()
+                                builder: (context) => BasicInformation()
                             )
                         );
                       },
