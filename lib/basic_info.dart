@@ -1,7 +1,12 @@
+//Page for invisible buttons
+
 import 'package:flutter/material.dart';
+import 'package:utonenergia/diagnosis.dart';
 import 'package:utonenergia/tpms.dart';
 import 'battery.dart';
 import 'tpms.dart';
+import 'diagnosis.dart';
+import 'service.dart';
 
 class BasicInformation extends StatefulWidget {
   @override
@@ -142,6 +147,58 @@ class _BasicInformationState extends State<BasicInformation> {
                           ],
                         )
                     ),
+                    Container(
+                      child: Container(
+                        margin: EdgeInsets.all(8),
+                        height: MediaQuery.of(context).size.height * 0.08,
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        child: RaisedButton(
+                          padding: EdgeInsets.all(6),
+                          color: Colors.white30,
+                          child: Text(
+                            'Diagnosis',
+                            style: TextStyle(
+                                fontFamily: 'Roboto Slab',
+                                color: Colors.black,
+                                fontSize: MediaQuery.of(context).size.width * 0.06
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(
+                                    builder: (context) => Diagnosis()
+                                )
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Container(
+                        margin: EdgeInsets.all(8),
+                        height: MediaQuery.of(context).size.height * 0.08,
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        child: RaisedButton(
+                          padding: EdgeInsets.all(6),
+                          color: Colors.white30,
+                          child: Text(
+                            'Service',
+                            style: TextStyle(
+                                fontFamily: 'Roboto Slab',
+                                color: Colors.black,
+                                fontSize: MediaQuery.of(context).size.width * 0.06
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(
+                                    builder: (context) => Service()
+                                )
+                            );
+                          },
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
