@@ -53,16 +53,21 @@ class Main extends StatelessWidget {
             );
         },
         child: Card(
-            color: Color.fromRGBO(89, 84, 84, 1),
+            color: Color.fromRGBO(179, 172, 172, 1),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(200)
+            ),
+            margin: const EdgeInsets.all(10),
             child: Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(5.0),
                 child: ListTile(
                   title: Center(child: Text(
                     status,
                     style: TextStyle(
                         fontFamily: 'Roboto Slab',
-                        color: Colors.white,
-                        fontSize: 24
+                        color: Colors.black87,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold
                     ),
                   )),
                 )
@@ -91,11 +96,17 @@ class Main extends StatelessWidget {
             backgroundColor: Color.fromRGBO(217, 213, 213, 1),
             body: Container(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Container(child: Image.asset('images/tyre.jpg')),
-                    userStatus('REGISTER'),
-                    userStatus('SIGN IN')
+                    Container(
+                      child: Column(
+                        children: <Widget>[
+                          userStatus('REGISTER'),
+                          userStatus('SIGN IN')
+                        ],
+                      ),
+                    )
                   ],
                 )
             )

@@ -11,7 +11,7 @@ class _UniqueState extends State<Unique> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Color.fromRGBO(217, 213, 213, 1),
         body: Container(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -23,7 +23,7 @@ class _UniqueState extends State<Unique> {
                   'UNIQUE ID',
                   style: TextStyle(
                       fontFamily: 'Roboto Slab',
-                      color: Colors.white,
+                      color: Color.fromRGBO(90, 90, 90, 1),
                       fontSize: 24
                   ),
                 ),
@@ -32,7 +32,7 @@ class _UniqueState extends State<Unique> {
                   margin: EdgeInsets.all(10),
                   //width: MediaQuery.of(context).size.width * 0.8,
                   child: new Theme(data: new ThemeData(
-                      primaryColor: Colors.white30,
+                      primaryColor: Color.fromRGBO(90, 90, 90, 1),
                       primaryColorDark: Colors.white
                   ), child: new TextField(
                     style: TextStyle(
@@ -40,40 +40,52 @@ class _UniqueState extends State<Unique> {
                         color: Colors.white
                     ),
                     obscureText: false,
-                    cursorColor: Colors.white30,
+                    cursorColor: Color.fromRGBO(90, 90, 90, 1),
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white30)
+                          borderSide: BorderSide(color: Color.fromRGBO(90, 90, 90, 1),)
                       ),
                       labelText: 'UNIQUE ID',
                       labelStyle: TextStyle(
-                          color: Colors.white30,
+                          color: Color.fromRGBO(90, 90, 90, 1),
                           fontFamily: 'Roboto Slab'
                       ),
                     ),
                   )
-                )
+                  )
               ),
-              Container(
-                width: MediaQuery.of(context).size.width * 1,
-                child: RaisedButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(
-                            builder: (context) => Register()
-                        )
-                    );
-                  },
-                  color: Colors.black,
-                  child: Text(
-                    'PROCEED',
-                    style: TextStyle(
-                        fontFamily: 'Roboto Slab',
-                        color: Colors.white,
-                        fontSize: 24
-                    ),
-                  ),
+
+              Builder(
+                builder: (context) => FlatButton(
                   splashColor: Colors.white30,
+                  onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(
+                              builder: (context) => Register()
+                          )
+                      );
+                  },
+                  child: Card(
+                      color: Color.fromRGBO(179, 172, 172, 1),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(200)
+                      ),
+                      margin: const EdgeInsets.all(10),
+                      child: Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: ListTile(
+                            title: Center(child: Text(
+                              'PROCEED',
+                              style: TextStyle(
+                                  fontFamily: 'Roboto Slab',
+                                  color: Colors.black87,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold
+                              ),
+                            )),
+                          )
+                      )
+                  ),
                 ),
               )
             ],
