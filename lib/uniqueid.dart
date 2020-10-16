@@ -11,6 +11,18 @@ class _UniqueState extends State<Unique> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(
+          elevation: 2,
+          backgroundColor: Colors.black,
+          title: Text(
+            'fortyfive',
+            style: TextStyle(
+                fontFamily: 'Roboto Slab',
+                fontSize: 24,
+                color: Colors.white
+            ),
+          ),
+        ),
         backgroundColor: Color.fromRGBO(217, 213, 213, 1),
         body: Container(
           child: Column(
@@ -54,7 +66,6 @@ class _UniqueState extends State<Unique> {
                   )
                   )
               ),
-
               Builder(
                 builder: (context) => FlatButton(
                   splashColor: Colors.white30,

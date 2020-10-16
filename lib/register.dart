@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'welcome.dart';
+import 'overview.dart';
+
 class Register extends StatefulWidget {
   @override
   _RegisterState createState() => _RegisterState();
@@ -11,7 +13,7 @@ class _RegisterState extends State<Register> {
         margin: EdgeInsets.all(10),
         //width: MediaQuery.of(context).size.width * 0.8,
         child: new Theme(data: new ThemeData(
-            primaryColor: Colors.white30,
+            primaryColor: Color.fromRGBO(90, 90, 90, 1),
             primaryColorDark: Colors.white
         ), child: new TextField(
           style: TextStyle(
@@ -19,15 +21,15 @@ class _RegisterState extends State<Register> {
               color: Colors.white
           ),
           obscureText: obscurity,
-          cursorColor: Colors.white30,
+          cursorColor: Color.fromRGBO(90, 90, 90, 1),
           decoration: InputDecoration(
             border: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.white30)
+                borderSide: BorderSide(color: Color.fromRGBO(90, 90, 90, 1),)
             ),
             labelText: inp,
             labelStyle: TextStyle(
                 fontFamily: 'Roboto Slab',
-                color: Colors.white30
+                color: Color.fromRGBO(90, 90, 90, 1)
             ),
           ),
         ))
@@ -41,7 +43,7 @@ class _RegisterState extends State<Register> {
         name,
         style: TextStyle(
             fontFamily: 'Roboto Slab',
-            color: Colors.white,
+            color: Color.fromRGBO(90, 90, 90, 1),
             fontSize: 24
         ),
       ),
@@ -53,7 +55,7 @@ class _RegisterState extends State<Register> {
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor: Color.fromRGBO(217, 213, 213, 1),
           body: SingleChildScrollView(
             padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
             child: Container(
@@ -69,26 +71,37 @@ class _RegisterState extends State<Register> {
                   input('PASSWORD', true),
                   inputLabel("CONFIRM PASSWORD"),
                   input('PASSWORD', true),
-                  Container(
-                    width: MediaQuery.of(context).size.width * 1,
-                    child: RaisedButton(
+                  Builder(
+                    builder: (context) => FlatButton(
+                      splashColor: Colors.white30,
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(
-                                builder: (context) => Welcome()
+                                builder: (context) => Overview()
                             )
                         );
                       },
-                      color: Colors.black,
-                      child: Text(
-                        'SUBMIT',
-                        style: TextStyle(
-                            fontFamily: 'Roboto Slab',
-                            color: Colors.white,
-                            fontSize: 24
-                        ),
+                      child: Card(
+                          color: Color.fromRGBO(179, 172, 172, 1),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(200)
+                          ),
+                          margin: const EdgeInsets.all(10),
+                          child: Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: ListTile(
+                                title: Center(child: Text(
+                                  'PROCEED',
+                                  style: TextStyle(
+                                      fontFamily: 'Roboto Slab',
+                                      color: Colors.black87,
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold
+                                  ),
+                                )),
+                              )
+                          )
                       ),
-                      splashColor: Colors.white30,
                     ),
                   )
                 ],
