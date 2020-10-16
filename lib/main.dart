@@ -53,7 +53,7 @@ class Main extends StatelessWidget {
             );
         },
         child: Card(
-            color: Colors.black,
+            color: Color.fromRGBO(89, 84, 84, 1),
             child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: ListTile(
@@ -77,6 +77,7 @@ class Main extends StatelessWidget {
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar(
+              elevation: 2,
               backgroundColor: Colors.black,
               title: Text(
                 'fortyfive',
@@ -87,11 +88,12 @@ class Main extends StatelessWidget {
                 ),
               ),
             ),
-            backgroundColor: Colors.black,
+            backgroundColor: Color.fromRGBO(217, 213, 213, 1),
             body: Container(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    Container(child: Image.asset('images/tyre.jpg')),
                     userStatus('REGISTER'),
                     userStatus('SIGN IN')
                   ],
