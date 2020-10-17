@@ -82,7 +82,8 @@ class Main extends StatelessWidget {
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar(
-              elevation: 2,
+              centerTitle: true,
+              elevation: 1,
               backgroundColor: Colors.black,
               title: Text(
                 'fortyfive',

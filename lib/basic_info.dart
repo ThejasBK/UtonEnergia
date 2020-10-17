@@ -42,17 +42,37 @@ class _BasicInformationState extends State<BasicInformation> {
     return MaterialApp(
         home: SafeArea(
             child: Scaffold(
-              backgroundColor: Color.fromRGBO(215, 215, 215, 1),
               appBar: AppBar(
-                  backgroundColor: Color.fromRGBO(215, 215, 215, 1),
-                  elevation: 0,
-                  title: Text(
-                    'My fortyfive',
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black
+                elevation: 1,
+                centerTitle: true,
+                backgroundColor: Colors.black,
+                title: Text(
+                  'fortyfive',
+                  style: TextStyle(
+                      fontFamily: 'Roboto Slab',
+                      fontSize: 24,
+                      color: Colors.white
+                  ),
+                ),
+              ),
+              backgroundColor: Color.fromRGBO(215, 215, 215, 1),
+              drawer: Drawer(
+                child: ListView(
+                  children: <Widget>[
+                    DrawerHeader(
+                      child: Text('Drawer Header'),
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                      ),
                     ),
-                  )
+                    ListTile(
+                      title: Text('Item 1'),
+                    ),
+                    ListTile(
+                      title: Text('Item 2'),
+                    )
+                  ],
+                ),
               ),
               body: Container(
                 child: Column(
@@ -63,72 +83,72 @@ class _BasicInformationState extends State<BasicInformation> {
                           child: Image.asset('images/full_vehicle.jpg'),
                           width: MediaQuery.of(context).size.width,
                         ),
-                        Positioned(
-                          left: MediaQuery.of(context).size.width * 0.1,
-                          top: MediaQuery.of(context).size.height * 0.16,
-                          child: Opacity(
-                            opacity: 1.0,
-                            child: Container(
-                              height: MediaQuery.of(context).size.height * 0.13,
-                              width: MediaQuery.of(context).size.width * 0.26,
-                              child: FlatButton(
-                                color: Colors.red,
-                                splashColor: Colors.white30,
-                                onPressed: () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Tpms()
-                                      )
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          right: MediaQuery.of(context).size.width * 0.1,
-                          top: MediaQuery.of(context).size.height * 0.16,
-                          child: Opacity(
-                            opacity: 1.0,
-                            child: Container(
-                              height: MediaQuery.of(context).size.height * 0.13,
-                              width: MediaQuery.of(context).size.width * 0.26,
-                              child: FlatButton(
-                                color: Colors.red,
-                                splashColor: Colors.white30,
-                                onPressed: () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Tpms()
-                                      )
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: MediaQuery.of(context).size.width * 0.53,
-                          top: MediaQuery.of(context).size.height * 0.09,
-                          child: Opacity(
-                            opacity: 1.0,
-                            child: Container(
-                              height: MediaQuery.of(context).size.height * 0.06,
-                              width: MediaQuery.of(context).size.width * 0.18,
-                              child: FlatButton(
-                                color: Colors.red,
-                                splashColor: Colors.white30,
-                                onPressed: () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Battery()
-                                      )
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
+                        // Positioned(
+                        //   left: MediaQuery.of(context).size.width * 0.1,
+                        //   top: MediaQuery.of(context).size.height * 0.16,
+                        //   child: Opacity(
+                        //     opacity: 0.0,
+                        //     child: Container(
+                        //       height: MediaQuery.of(context).size.height * 0.13,
+                        //       width: MediaQuery.of(context).size.width * 0.26,
+                        //       child: FlatButton(
+                        //         color: Colors.red,
+                        //         splashColor: Colors.white30,
+                        //         onPressed: () {
+                        //           Navigator.push(context,
+                        //               MaterialPageRoute(
+                        //                   builder: (context) => Tpms()
+                        //               )
+                        //           );
+                        //         },
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
+                        // Positioned(
+                        //   right: MediaQuery.of(context).size.width * 0.1,
+                        //   top: MediaQuery.of(context).size.height * 0.16,
+                        //   child: Opacity(
+                        //     opacity: 0.0,
+                        //     child: Container(
+                        //       height: MediaQuery.of(context).size.height * 0.13,
+                        //       width: MediaQuery.of(context).size.width * 0.26,
+                        //       child: FlatButton(
+                        //         color: Colors.red,
+                        //         splashColor: Colors.white30,
+                        //         onPressed: () {
+                        //           Navigator.push(context,
+                        //               MaterialPageRoute(
+                        //                   builder: (context) => Tpms()
+                        //               )
+                        //           );
+                        //         },
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
+                        // Positioned(
+                        //   left: MediaQuery.of(context).size.width * 0.53,
+                        //   top: MediaQuery.of(context).size.height * 0.09,
+                        //   child: Opacity(
+                        //     opacity: 0.0,
+                        //     child: Container(
+                        //       height: MediaQuery.of(context).size.height * 0.06,
+                        //       width: MediaQuery.of(context).size.width * 0.18,
+                        //       child: FlatButton(
+                        //         color: Colors.red,
+                        //         splashColor: Colors.white30,
+                        //         onPressed: () {
+                        //           Navigator.push(context,
+                        //               MaterialPageRoute(
+                        //                   builder: (context) => Battery()
+                        //               )
+                        //           );
+                        //         },
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                     Container(

@@ -55,6 +55,19 @@ class _RegisterState extends State<Register> {
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
+          appBar: AppBar(
+            elevation: 1,
+            centerTitle: true,
+            backgroundColor: Colors.black,
+            title: Text(
+              'fortyfive',
+              style: TextStyle(
+                  fontFamily: 'Roboto Slab',
+                  fontSize: 24,
+                  color: Colors.white
+              ),
+            ),
+          ),
           backgroundColor: Color.fromRGBO(217, 213, 213, 1),
           body: SingleChildScrollView(
             padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),

@@ -13,6 +13,7 @@ class _UniqueState extends State<Unique> {
       home: Scaffold(
         appBar: AppBar(
           elevation: 2,
+          centerTitle: true,
           backgroundColor: Colors.black,
           title: Text(
             'fortyfive',
