@@ -56,24 +56,38 @@ class _BasicInformationState extends State<BasicInformation> {
                 ),
               ),
               backgroundColor: Color.fromRGBO(215, 215, 215, 1),
-              drawer: Drawer(
-                child: ListView(
-                  children: <Widget>[
-                    DrawerHeader(
-                      child: Text('Drawer Header'),
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                      ),
-                    ),
-                    ListTile(
-                      title: Text('Item 1'),
-                    ),
-                    ListTile(
-                      title: Text('Item 2'),
-                    )
-                  ],
-                ),
-              ),
+              // drawer: Drawer(
+              //   child: ListView(
+              //     children: <Widget>[
+              //       DrawerHeader(
+              //         child: Text('Drawer Header'),
+              //         decoration: BoxDecoration(
+              //           color: Colors.blue,
+              //         ),
+              //       ),
+              //       ListTile(
+              //         title: Text('Battery'),
+              //         onTap: () {
+              //           Navigator.push(context,
+              //             MaterialPageRoute(
+              //                 builder: (context) => Battery()
+              //             )
+              //           );
+              //         }
+              //       ),
+              //       ListTile(
+              //           title: Text('Battery'),
+              //           onTap: () {
+              //             Navigator.push(context,
+              //                 MaterialPageRoute(
+              //                     builder: (context) => Tpms()
+              //                 )
+              //             );
+              //           }
+              //       ),
+              //     ],
+              //   ),
+              // ),
               body: Container(
                 child: Column(
                   children: <Widget>[
