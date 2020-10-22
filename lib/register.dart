@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'welcome.dart';
 import 'overview.dart';
 
@@ -8,6 +9,25 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+
+  final databaseReference = FirebaseDatabase.instance.reference();
+
+  void createRecord(){
+
+    // TODO: Update user data in this function
+    databaseReference.once().then((DataSnapshot snapshot) {
+      print(snapshot.value.length);
+    });
+    // databaseReference.child("1").set({
+    //   'title': 'Mastering EJB',
+    //   'description': 'Programming Guide for J2EE'
+    // });
+    // databaseReference.child("2").set({
+    //   'title': 'Flutter in Action',
+    //   'description': 'Complete Programming Guide to learn Flutter'
+    // });
+  }
+
   Container input(String inp, bool obscurity) {
     return Container(
         margin: EdgeInsets.all(10),
@@ -88,11 +108,12 @@ class _RegisterState extends State<Register> {
                     builder: (context) => FlatButton(
                       splashColor: Colors.white30,
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(
-                                builder: (context) => Overview()
-                            )
-                        );
+                        createRecord();
+                        // Navigator.push(context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => Overview()
+                        //     )
+                        // );
                       },
                       child: Card(
                           color: Color.fromRGBO(179, 172, 172, 1),
