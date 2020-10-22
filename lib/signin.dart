@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:utonenergia/overview.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'overview.dart';
 import 'basic_info.dart';
 
@@ -9,7 +9,34 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  Container input(String inp, bool obscurity) {
+
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  void checkData(TextEditingController uniqueId){
+    final databaseReference = FirebaseDatabase.instance.reference().child(uniqueId.text);
+    databaseReference.once().then((DataSnapshot snapshot) {
+      // print(snapshot.value['PASSWORD']);
+      // print(usernameController.text);
+      // print(passwordController.text);
+      try {
+        if(passwordController.text ==  snapshot.value['PASSWORD'])
+        Navigator.push(context,
+            MaterialPageRoute(
+                builder: (context) => BasicInformation()
+            )
+        );
+      else
+        print('Invalid credentials');}
+
+      catch(Exception) {
+        print('Invalid uniqueID');
+      }
+
+    });
+  }
+
+  Container input(String inp, bool obscurity, TextEditingController controllerName) {
     return Container(
         margin: EdgeInsets.all(10),
         //width: MediaQuery.of(context).size.width * 0.8,
@@ -17,6 +44,7 @@ class _SignInState extends State<SignIn> {
             primaryColor: Color.fromRGBO(90, 90, 90, 1),
             primaryColorDark: Colors.white
         ), child: new TextField(
+          controller: controllerName,
           style: TextStyle(
               fontFamily: 'Roboto Slab',
               color: Colors.white
@@ -76,18 +104,14 @@ class _SignInState extends State<SignIn> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 inputLabel('USERNAME'),
-                input('USERNAME', false),
+                input('USERNAME', false, usernameController),
                 inputLabel("PASSWORD"),
-                input('PASSWORD', true),
+                input('PASSWORD', true, passwordController),
                 Builder(
               builder: (context) => FlatButton(
                 splashColor: Colors.white30,
                 onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(
-                            builder: (context) => BasicInformation()
-                        )
-                    );
+                  checkData(usernameController);
                 },
                 child: Card(
                     color: Color.fromRGBO(179, 172, 172, 1),
