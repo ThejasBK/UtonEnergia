@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'welcome.dart';
 import 'overview.dart';
+import 'basic_info.dart';
+
 
 class Register extends StatefulWidget {
   @override
@@ -11,24 +13,12 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
 
   final databaseReference = FirebaseDatabase.instance.reference();
+  TextEditingController uniqueIdController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordCheckController = TextEditingController();
 
-  void createRecord(){
-
-    // TODO: Update user data in this function
-    databaseReference.once().then((DataSnapshot snapshot) {
-      print(snapshot.value.length);
-    });
-    // databaseReference.child("1").set({
-    //   'title': 'Mastering EJB',
-    //   'description': 'Programming Guide for J2EE'
-    // });
-    // databaseReference.child("2").set({
-    //   'title': 'Flutter in Action',
-    //   'description': 'Complete Programming Guide to learn Flutter'
-    // });
-  }
-
-  Container input(String inp, bool obscurity) {
+  Container input(String inp, bool obscurity, TextEditingController controllerName) {
     return Container(
         margin: EdgeInsets.all(10),
         //width: MediaQuery.of(context).size.width * 0.8,
@@ -36,6 +26,7 @@ class _RegisterState extends State<Register> {
             primaryColor: Color.fromRGBO(90, 90, 90, 1),
             primaryColorDark: Colors.white
         ), child: new TextField(
+          controller: controllerName,
           style: TextStyle(
               fontFamily: 'Roboto Slab',
               color: Colors.white
@@ -72,6 +63,7 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
+    dynamic numberOfUsers;
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
@@ -96,25 +88,29 @@ class _RegisterState extends State<Register> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  inputLabel('USERNAME'),
-                  input('USERNAME', false),
+                  inputLabel('UNIQUE ID'),
+                  input('UNIQUE ID', false, uniqueIdController),
                   inputLabel("EMAIL"),
-                  input('E-mail', false),
+                  input('E-mail', false, emailController),
                   inputLabel("PASSWORD"),
-                  input('PASSWORD', true),
+                  input('PASSWORD', true, passwordController),
                   inputLabel("CONFIRM PASSWORD"),
-                  input('PASSWORD', true),
+                  input('PASSWORD', true, passwordCheckController),
                   Builder(
                     builder: (context) => FlatButton(
                       splashColor: Colors.white30,
                       onPressed: () {
-                        createRecord();
-                        // Navigator.push(context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => Overview()
-                        //     )
-                        // );
-                      },
+                        String uniqueId = uniqueIdController.text;
+                        databaseReference.child(uniqueId).set({
+                            'email': emailController.text,
+                            'password': passwordController.text,
+                          });
+                        Navigator.push(context,
+                            MaterialPageRoute(
+                                builder: (context) => BasicInformation()
+                            )
+                        );
+                        },
                       child: Card(
                           color: Color.fromRGBO(179, 172, 172, 1),
                           shape: RoundedRectangleBorder(

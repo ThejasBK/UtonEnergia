@@ -16,9 +16,6 @@ class _SignInState extends State<SignIn> {
   void checkData(TextEditingController uniqueId){
     final databaseReference = FirebaseDatabase.instance.reference().child(uniqueId.text);
     databaseReference.once().then((DataSnapshot snapshot) {
-      // print(snapshot.value['PASSWORD']);
-      // print(usernameController.text);
-      // print(passwordController.text);
       try {
         if(passwordController.text ==  snapshot.value['PASSWORD'])
         Navigator.push(context,
@@ -26,9 +23,8 @@ class _SignInState extends State<SignIn> {
                 builder: (context) => BasicInformation()
             )
         );
-      else
-        print('Invalid credentials');}
-
+        else
+          print('Invalid credentials');}
       catch(Exception) {
         print('Invalid uniqueID');
       }
@@ -47,7 +43,7 @@ class _SignInState extends State<SignIn> {
           controller: controllerName,
           style: TextStyle(
               fontFamily: 'Roboto Slab',
-              color: Colors.white
+              color: Colors.black87
           ),
           obscureText: obscurity,
           cursorColor: Color.fromRGBO(90, 90, 90, 1),
@@ -81,6 +77,7 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
+    bool _value = true;
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
@@ -107,6 +104,23 @@ class _SignInState extends State<SignIn> {
                 input('USERNAME', false, usernameController),
                 inputLabel("PASSWORD"),
                 input('PASSWORD', true, passwordController),
+                  CheckboxListTile(
+                  value: _value,
+                  onChanged: (bool newValue) {
+                    setState(() {
+                      _value = newValue;
+                    });
+                  },
+                    title: Text(
+                        'Remember Me',
+                      style:  TextStyle(
+                          fontFamily: 'Roboto Slab',
+                          color: Color.fromRGBO(90, 90, 90, 1),
+                          fontSize: 20
+                      ),
+                    ),
+                    controlAffinity: ListTileControlAffinity.leading,
+                  ),
                 Builder(
               builder: (context) => FlatButton(
                 splashColor: Colors.white30,

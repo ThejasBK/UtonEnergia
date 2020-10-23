@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
-import 'package:utonenergia/uniqueid.dart';
 import 'uniqueid.dart';
 import 'signin.dart';
+import 'register.dart';
 //Splash screen changed in android/app/src/main/res/drawable -  android
 //Splash screen changed in ios/Runner/Assets.xcassets/launchImage.imageset - iOS
 void main() {
@@ -42,7 +42,7 @@ class Main extends StatelessWidget {
           if(status == 'REGISTER')
             Navigator.push(context,
                 MaterialPageRoute(
-                    builder: (context) => Unique()
+                    builder: (context) => Register()
                 )
             );
           else

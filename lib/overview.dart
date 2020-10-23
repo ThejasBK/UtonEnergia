@@ -137,15 +137,17 @@ class _OverviewState extends State<Overview> {
         child: Scaffold(
           backgroundColor: Color.fromRGBO(215, 215, 215, 1),
           appBar: AppBar(
-              backgroundColor: Color.fromRGBO(215, 215, 215, 1),
-              elevation: 0,
-              title: Text(
-                'My fortyfive',
-                style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black
-                ),
-              )
+            elevation: 1,
+            centerTitle: true,
+            backgroundColor: Colors.black,
+            title: Text(
+              'fortyfive',
+              style: TextStyle(
+                  fontFamily: 'Roboto Slab',
+                  fontSize: 24,
+                  color: Colors.white
+              ),
+            ),
           ),
           body: Container(
             child: Column(
