@@ -24,12 +24,18 @@ class _RegisterState extends State<Register> {
         //width: MediaQuery.of(context).size.width * 0.8,
         child: new Theme(data: new ThemeData(
             primaryColor: Color.fromRGBO(90, 90, 90, 1),
-            primaryColorDark: Colors.white
-        ), child: new TextField(
+            primaryColorDark: Colors.black87
+        ), child: new TextFormField(
+          validator: (value) {
+            if(value.isEmpty) {
+              return 'Please enter some text';
+            }
+            return null;
+          },
           controller: controllerName,
           style: TextStyle(
               fontFamily: 'Roboto Slab',
-              color: Colors.white
+              color: Colors.black87
           ),
           obscureText: obscurity,
           cursorColor: Color.fromRGBO(90, 90, 90, 1),
@@ -76,7 +82,7 @@ class _RegisterState extends State<Register> {
               style: TextStyle(
                   fontFamily: 'Roboto Slab',
                   fontSize: 24,
-                  color: Colors.white
+                  color: Colors.black87
               ),
             ),
           ),
@@ -96,7 +102,8 @@ class _RegisterState extends State<Register> {
                   input('PASSWORD', true, passwordController),
                   inputLabel("CONFIRM PASSWORD"),
                   input('PASSWORD', true, passwordCheckController),
-                  Builder(
+                  if(passwordController.text == passwordCheckController.text && passwordController.text != null)
+                    Builder(
                     builder: (context) => FlatButton(
                       splashColor: Colors.white30,
                       onPressed: () {
@@ -134,6 +141,45 @@ class _RegisterState extends State<Register> {
                       ),
                     ),
                   )
+                  else
+                    Builder(
+                      builder: (context) => FlatButton(
+                        splashColor: Colors.white30,
+                        onPressed: () {
+                          // String uniqueId = uniqueIdController.text;
+                          // databaseReference.child(uniqueId).set({
+                          //   'email': emailController.text,
+                          //   'password': passwordController.text,
+                          // });
+                          // Navigator.push(context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => BasicInformation()
+                          //     )
+                          // );
+                        },
+                        child: Card(
+                            color: Color.fromRGBO(179, 172, 172, 1),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(200)
+                            ),
+                            margin: const EdgeInsets.all(10),
+                            child: Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: ListTile(
+                                  title: Center(child: Text(
+                                    'PROCEED',
+                                    style: TextStyle(
+                                        fontFamily: 'Roboto Slab',
+                                        color: Colors.black87,
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold
+                                    ),
+                                  )),
+                                )
+                            )
+                        ),
+                      ),
+                    ),
                 ],
               ),
             ),
