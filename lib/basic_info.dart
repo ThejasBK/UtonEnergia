@@ -1,10 +1,6 @@
-//Page for invisible buttons
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:utonenergia/diagnosis.dart';
-import 'package:utonenergia/tpms.dart';
 import 'battery.dart';
-import 'tpms.dart';
 import 'diagnosis.dart';
 import 'service.dart';
 
@@ -37,6 +33,21 @@ class _BasicInformationState extends State<BasicInformation> {
     );
   }
 
+  Widget _createFooterItem({IconData icon, String text, GestureTapCallback onTap}){
+    return ListTile(
+      title: Row(
+        children: <Widget>[
+          Icon(icon),
+          Padding(
+            padding: EdgeInsets.only(left: 8.0),
+            child: Text(text),
+          )
+        ],
+      ),
+      onTap: onTap,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -56,38 +67,63 @@ class _BasicInformationState extends State<BasicInformation> {
                 ),
               ),
               backgroundColor: Color.fromRGBO(215, 215, 215, 1),
-              // drawer: Drawer(
-              //   child: ListView(
-              //     children: <Widget>[
-              //       DrawerHeader(
-              //         child: Text('Drawer Header'),
-              //         decoration: BoxDecoration(
-              //           color: Colors.blue,
-              //         ),
-              //       ),
-              //       ListTile(
-              //         title: Text('Battery'),
-              //         onTap: () {
-              //           Navigator.push(context,
-              //             MaterialPageRoute(
-              //                 builder: (context) => Battery()
-              //             )
-              //           );
-              //         }
-              //       ),
-              //       ListTile(
-              //           title: Text('Battery'),
-              //           onTap: () {
-              //             Navigator.push(context,
-              //                 MaterialPageRoute(
-              //                     builder: (context) => Tpms()
-              //                 )
-              //             );
-              //           }
-              //       ),
-              //     ],
-              //   ),
-              // ),
+              drawer: Drawer(
+                child: ListView(
+                  children: <Widget>[
+                    DrawerHeader(
+                      child: Text('Drawer Header'),
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                      ),
+                    ),
+                    Column(
+                      children: <Widget>[
+                        ListTile(
+                            title: Text('Battery'),
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Battery()
+                                  )
+                              );
+                            }
+                        ),
+                        ListTile(
+                            title: Text('Diagnosis'),
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Diagnosis()
+                                  )
+                              );
+                            }
+                        ),
+                        ListTile(
+                            title: Text('Service'),
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Service()
+                                  )
+                              );
+                            }
+                        ),
+                        ListTile(
+                            title: Text('Sign Out'),
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Service()
+                                  )
+                              );
+                            }
+                        ),
+                      ],
+                    ),
+
+                  ],
+                ),
+              ),
               body: Container(
                 child: Column(
                   children: <Widget>[

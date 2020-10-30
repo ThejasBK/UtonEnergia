@@ -15,20 +15,21 @@ class _SignInState extends State<SignIn> {
 
   void checkData(TextEditingController uniqueId){
     final databaseReference = FirebaseDatabase.instance.reference().child(uniqueId.text);
+    print(passwordController.text);
     databaseReference.once().then((DataSnapshot snapshot) {
+      print(snapshot.value['password']);
       try {
-        if(passwordController.text ==  snapshot.value['PASSWORD'])
-        Navigator.push(context,
-            MaterialPageRoute(
-                builder: (context) => BasicInformation()
-            )
-        );
+        if(passwordController.text ==  snapshot.value['password'])
+          Navigator.push(context,
+              MaterialPageRoute(
+                  builder: (context) => BasicInformation()
+              )
+          );
         else
           print('Invalid credentials');}
       catch(Exception) {
         print('Invalid uniqueID');
       }
-
     });
   }
 

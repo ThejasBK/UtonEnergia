@@ -14,13 +14,14 @@ class _BatteryState extends State<Battery> {
         child: Scaffold(
           backgroundColor: Color.fromRGBO(215, 215, 215, 1),
           appBar: AppBar(
-              backgroundColor: Color.fromRGBO(215, 215, 215, 1),
-              elevation: 0,
+              backgroundColor: Colors.black,
+              elevation: 1,
+              centerTitle: true,
               title: Text(
                 'My fortyfive',
                 style: TextStyle(
                     fontSize: 20,
-                    color: Colors.black
+                    color: Colors.white
                 ),
               )
           ),

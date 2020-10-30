@@ -31,12 +31,13 @@ class _DiagnosisState extends State<Diagnosis> {
       home: SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Color.fromRGBO(215, 215, 215, 1),
+            centerTitle: true,
+            backgroundColor: Colors.black,
             title: Text(
                 'fortyfive',
-              style: TextStyle(fontSize: 20, color: Colors.black)
+              style: TextStyle(fontSize: 20, color: Colors.white)
             ),
-            elevation: 0,
+            elevation: 1,
           ),
           backgroundColor: Color.fromRGBO(215, 215, 215, 1),
           body: Column(
