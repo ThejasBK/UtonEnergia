@@ -13,6 +13,93 @@ class _SignInState extends State<SignIn> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  void _showDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: Card(
+              color: Colors.black,
+              child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: ListTile(
+                    title: Center(child: Text(
+                      'fortyfive',
+                      style: TextStyle(
+                          fontFamily: 'Roboto Slab',
+                          color: Colors.white,
+                          fontSize: 24
+                      ),
+                    )),
+                  )
+              )
+          ),
+          backgroundColor: Colors.black,
+          content: Container(
+            height: MediaQuery.of(context).size.height * 0.3,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                    'The Unique ID or password entered is incorrect',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontFamily: 'Roboto Slab',
+                      color: Colors.white,
+                      fontSize: 24
+                  ),
+                ),
+                Text(
+                  'Please try again',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontFamily: 'Roboto Slab',
+                      color: Colors.white,
+                      fontSize: 24
+                  ),
+                ),
+                Builder(
+                  builder: (context) => FlatButton(
+                    splashColor: Colors.white30,
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(
+                              builder: (context) => SignIn()
+                          )
+                      );
+                    },
+                    child: Card(
+                        color: Color.fromRGBO(179, 172, 172, 1),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(200)
+                        ),
+                        margin: const EdgeInsets.all(10),
+                        child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: ListTile(
+                              title: Center(child: Text(
+                                'OK',
+                                style: TextStyle(
+                                    fontFamily: 'Roboto Slab',
+                                    color: Colors.black87,
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold
+                                ),
+                              )),
+                            )
+                        )
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   void checkData(TextEditingController uniqueId){
     final databaseReference = FirebaseDatabase.instance.reference().child(uniqueId.text);
     print(passwordController.text);
@@ -26,7 +113,8 @@ class _SignInState extends State<SignIn> {
               )
           );
         else
-          print('Invalid credentials');}
+          _showDialog();
+      }
       catch(Exception) {
         print('Invalid uniqueID');
       }
@@ -101,8 +189,8 @@ class _SignInState extends State<SignIn> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                inputLabel('USERNAME'),
-                input('USERNAME', false, usernameController),
+                inputLabel('UNIQUE ID'),
+                input('UNIQUE ID', false, usernameController),
                 inputLabel("PASSWORD"),
                 input('PASSWORD', true, passwordController),
                   CheckboxListTile(
