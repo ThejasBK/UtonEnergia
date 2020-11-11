@@ -5,10 +5,11 @@ import 'package:utonenergia/register.dart';
 import 'overview.dart';
 import 'basic_info.dart';
 import 'diagnosis.dart';
+import 'opening.dart';
 
 void main() {
   return runApp(MaterialApp(
-    home: SignIn()
+    home: Opening()
   ));
 }
 
