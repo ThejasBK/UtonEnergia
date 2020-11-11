@@ -71,15 +71,42 @@ class _BasicInformationState extends State<BasicInformation> {
                 child: ListView(
                   children: <Widget>[
                     DrawerHeader(
-                      child: Text('Drawer Header'),
+                      child: Column(
+                        children: <Widget>[
+                          Icon(
+                            Icons.perm_identity,
+                            size: 50.0,
+                            color: Colors.white,
+                          ),
+                          Text(
+                            'UEFF001',
+                            style: TextStyle(
+                              fontFamily: 'Roboto Slab',
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white
+                            ),
+                          )
+                        ],
+                      ),
                       decoration: BoxDecoration(
-                        color: Colors.blue,
+                        color: Color.fromRGBO(215, 215, 215, 1),
                       ),
                     ),
                     Column(
                       children: <Widget>[
                         ListTile(
-                            title: Text('Battery'),
+                            title: Text('Battery Status'),
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Battery()
+                                  )
+                              );
+                            }
+                        ),
+                        ListTile(
+                            title: Text('Motor Health'),
                             onTap: () {
                               Navigator.push(context,
                                   MaterialPageRoute(
@@ -99,11 +126,21 @@ class _BasicInformationState extends State<BasicInformation> {
                             }
                         ),
                         ListTile(
-                            title: Text('Service'),
+                            title: Text('Services'),
                             onTap: () {
                               Navigator.push(context,
                                   MaterialPageRoute(
                                       builder: (context) => Service()
+                                  )
+                              );
+                            }
+                        ),
+                        ListTile(
+                            title: Text('Blogs'),
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Battery()
                                   )
                               );
                             }
@@ -120,155 +157,49 @@ class _BasicInformationState extends State<BasicInformation> {
                         ),
                       ],
                     ),
-
                   ],
                 ),
               ),
               body: Container(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
-                    Stack(
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        Container(
-                          child: Image.asset('images/full_vehicle.jpg'),
-                          width: MediaQuery.of(context).size.width,
+                        Stack(
+                          children: <Widget>[
+                            Container(
+                              child: Image.asset('images/full_vehicle.jpg'),
+                              width: MediaQuery.of(context).size.width,
+                            ),
+                          ],
                         ),
-                        // Positioned(
-                        //   left: MediaQuery.of(context).size.width * 0.1,
-                        //   top: MediaQuery.of(context).size.height * 0.16,
-                        //   child: Opacity(
-                        //     opacity: 0.0,
-                        //     child: Container(
-                        //       height: MediaQuery.of(context).size.height * 0.13,
-                        //       width: MediaQuery.of(context).size.width * 0.26,
-                        //       child: FlatButton(
-                        //         color: Colors.red,
-                        //         splashColor: Colors.white30,
-                        //         onPressed: () {
-                        //           Navigator.push(context,
-                        //               MaterialPageRoute(
-                        //                   builder: (context) => Tpms()
-                        //               )
-                        //           );
-                        //         },
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
-                        // Positioned(
-                        //   right: MediaQuery.of(context).size.width * 0.1,
-                        //   top: MediaQuery.of(context).size.height * 0.16,
-                        //   child: Opacity(
-                        //     opacity: 0.0,
-                        //     child: Container(
-                        //       height: MediaQuery.of(context).size.height * 0.13,
-                        //       width: MediaQuery.of(context).size.width * 0.26,
-                        //       child: FlatButton(
-                        //         color: Colors.red,
-                        //         splashColor: Colors.white30,
-                        //         onPressed: () {
-                        //           Navigator.push(context,
-                        //               MaterialPageRoute(
-                        //                   builder: (context) => Tpms()
-                        //               )
-                        //           );
-                        //         },
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
-                        // Positioned(
-                        //   left: MediaQuery.of(context).size.width * 0.53,
-                        //   top: MediaQuery.of(context).size.height * 0.09,
-                        //   child: Opacity(
-                        //     opacity: 0.0,
-                        //     child: Container(
-                        //       height: MediaQuery.of(context).size.height * 0.06,
-                        //       width: MediaQuery.of(context).size.width * 0.18,
-                        //       child: FlatButton(
-                        //         color: Colors.red,
-                        //         splashColor: Colors.white30,
-                        //         onPressed: () {
-                        //           Navigator.push(context,
-                        //               MaterialPageRoute(
-                        //                   builder: (context) => Battery()
-                        //               )
-                        //           );
-                        //         },
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
+                        Container(
+                            padding: EdgeInsets.only(
+                              left: MediaQuery.of(context).size.width * 0.1,
+                              right: MediaQuery.of(context).size.width * 0.1,
+                              top: MediaQuery.of(context).size.height * 0.1,
+                            ),
+                            child: Column(
+                              children: <Widget>[
+                                tableContent('Total Distance', '1600 Kms'),
+                                tableContent('Distance / Ride', '30 Kms'),
+                                tableContent('Times Charged', '27'),
+                                tableContent('Service Request', '0'),
+                                tableContent('Vehicle Health', '98 %'),
+                              ],
+                            )
+                        ),
+
                       ],
                     ),
                     Container(
-                        padding: EdgeInsets.only(
-                          left: MediaQuery.of(context).size.width * 0.1,
-                          right: MediaQuery.of(context).size.width * 0.1,
-                          top: MediaQuery.of(context).size.height * 0.1,
-                        ),
-                        child: Column(
-                          children: <Widget>[
-                            tableContent('Total Distance', '1600 Kms'),
-                            tableContent('Distance / Ride', '30 Kms'),
-                            tableContent('Times Charged', '27'),
-                            tableContent('Service Request', '0'),
-                            tableContent('Vehicle Health', '98 %'),
-                          ],
-                        )
-                    ),
-                    Container(
-                      child: Container(
-                        margin: EdgeInsets.all(8),
-                        height: MediaQuery.of(context).size.height * 0.08,
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        child: RaisedButton(
-                          padding: EdgeInsets.all(6),
-                          color: Colors.white30,
-                          child: Text(
-                            'Diagnosis',
-                            style: TextStyle(
-                                fontFamily: 'Roboto Slab',
-                                color: Colors.black,
-                                fontSize: MediaQuery.of(context).size.width * 0.06
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(
-                                    builder: (context) => Diagnosis()
-                                )
-                            );
-                          },
-                        ),
+                      child: Icon(
+                        Icons.lock,
+                        size: 40,
                       ),
                     ),
-                    Container(
-                      child: Container(
-                        margin: EdgeInsets.all(8),
-                        height: MediaQuery.of(context).size.height * 0.08,
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        child: RaisedButton(
-                          padding: EdgeInsets.all(6),
-                          color: Colors.white30,
-                          child: Text(
-                            'Service',
-                            style: TextStyle(
-                                fontFamily: 'Roboto Slab',
-                                color: Colors.black,
-                                fontSize: MediaQuery.of(context).size.width * 0.06
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(
-                                    builder: (context) => Service()
-                                )
-                            );
-                          },
-                        ),
-                      ),
-                    )
                   ],
                 ),
               ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:splashscreen/splashscreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:utonenergia/register.dart';
 import 'overview.dart';
@@ -9,9 +10,30 @@ import 'opening.dart';
 
 void main() {
   return runApp(MaterialApp(
-    home: Opening()
+    home: MyApp()
   ));
 }
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new SplashScreen(
+      seconds: 5,
+      navigateAfterSeconds: new Opening(),
+      title: new Text('fortyfive',
+        style: new TextStyle(
+            fontFamily: 'Roboto Slab',
+            fontWeight: FontWeight.bold,
+            fontSize: 40,
+            color: Colors.white
+        ),
+      ),
+      backgroundColor: Colors.black,
+      loaderColor: Colors.white30,
+    );
+  }
+}
+
 
 class SignIn extends StatefulWidget {
   @override
