@@ -7,10 +7,12 @@ import 'overview.dart';
 import 'basic_info.dart';
 import 'diagnosis.dart';
 import 'opening.dart';
+import 'battery_status.dart';
 
 void main() {
   return runApp(MaterialApp(
-    home: MyApp()
+      debugShowCheckedModeBanner: false,
+      home: MyApp()
   ));
 }
 

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'battery.dart';
 import 'diagnosis.dart';
 import 'service.dart';
+import 'motor_status.dart';
 
 class BasicInformation extends StatefulWidget {
   @override
@@ -110,7 +111,7 @@ class _BasicInformationState extends State<BasicInformation> {
                             onTap: () {
                               Navigator.push(context,
                                   MaterialPageRoute(
-                                      builder: (context) => Battery()
+                                      builder: (context) => GaugeApp()
                                   )
                               );
                             }
