@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:splashscreen/splashscreen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:utonenergia/register.dart';
-import 'overview.dart';
 import 'basic_info.dart';
-import 'diagnosis.dart';
 import 'opening.dart';
-import 'battery_status.dart';
 
 void main() {
   return runApp(MaterialApp(
@@ -46,6 +42,8 @@ class _SignInState extends State<SignIn> {
 
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+
 
   void _showDialog() {
     showDialog(
@@ -76,7 +74,7 @@ class _SignInState extends State<SignIn> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  'The Unique ID or password entered is incorrect',
+                  'One of your inputs is incorrect',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontFamily: 'Roboto Slab',
@@ -134,13 +132,13 @@ class _SignInState extends State<SignIn> {
     );
   }
 
-  void checkData(TextEditingController uniqueId){
+  void checkData(TextEditingController uniqueId, TextEditingController email){
     final databaseReference = FirebaseDatabase.instance.reference().child(uniqueId.text);
     print(passwordController.text);
     databaseReference.once().then((DataSnapshot snapshot) {
       print(snapshot.value['password']);
       try {
-        if(passwordController.text ==  snapshot.value['password'])
+        if((passwordController.text ==  snapshot.value['password']) && emailController.text == snapshot.value['email'])
           Navigator.push(context,
               MaterialPageRoute(
                   builder: (context) => BasicInformation()
@@ -225,9 +223,8 @@ class _SignInState extends State<SignIn> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(child: Image.asset('images/tyre.jpg')),
-                  // inputLabel('UNIQUE ID'),
                   input('UNIQUE ID', false, usernameController),
-                  // inputLabel("PASSWORD"),
+                  input('E-MAIL', false, emailController),
                   input('PASSWORD', true, passwordController),
                   CheckboxListTile(
                     value: _value,
@@ -281,7 +278,7 @@ class _SignInState extends State<SignIn> {
                           builder: (context) => FlatButton(
                             splashColor: Colors.white30,
                             onPressed: () {
-                              checkData(usernameController);
+                              checkData(usernameController, emailController);
                             },
                             child: Card(
                                 color: Color.fromRGBO(179, 172, 172, 1),
