@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:splashscreen/splashscreen.dart';
+import 'forgot_password.dart';
 import 'package:utonenergia/register.dart';
 import 'basic_info.dart';
 import 'opening.dart';
@@ -248,7 +249,7 @@ class _SignInState extends State<SignIn> {
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(
-                                builder: (context) => Register()
+                                builder: (context) => PasswordReset()
                             )
                         );
                       },
