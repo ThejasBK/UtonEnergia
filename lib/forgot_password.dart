@@ -50,15 +50,13 @@ Padding inputLabel(String name) {
   );
 }
 
-class PasswordReset extends StatefulWidget {
+class MobileInput extends StatefulWidget {
   @override
-  _PasswordResetState createState() => _PasswordResetState();
+  _MobileInputState createState() => _MobileInputState();
 }
 
-class _PasswordResetState extends State<PasswordReset> {
-
+class _MobileInputState extends State<MobileInput> {
   TextEditingController mobileNumberController = TextEditingController();
-  TextEditingController otpController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -88,6 +86,84 @@ class _PasswordResetState extends State<PasswordReset> {
                 children: <Widget>[
                   inputLabel('Mobile Number'),
                   input('Mobile Number', false, mobileNumberController),
+                  Builder(
+                    builder: (context) => FlatButton(
+                      splashColor: Colors.white30,
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(
+                                builder: (context) => PasswordReset()
+                            )
+                        );
+                      },
+                      child: Card(
+                          color: Color.fromRGBO(179, 172, 172, 1),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(200)
+                          ),
+                          margin: const EdgeInsets.all(10),
+                          child: Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: ListTile(
+                                title: Center(child: Text(
+                                  'PROCEED',
+                                  style: TextStyle(
+                                      fontFamily: 'Roboto Slab',
+                                      color: Colors.black87,
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold
+                                  ),
+                                )),
+                              )
+                          )
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class PasswordReset extends StatefulWidget {
+  @override
+  _PasswordResetState createState() => _PasswordResetState();
+}
+
+class _PasswordResetState extends State<PasswordReset> {
+
+  TextEditingController otpController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            elevation: 1,
+            centerTitle: true,
+            backgroundColor: Colors.black,
+            title: Text(
+              'fortyfive',
+              style: TextStyle(
+                  fontFamily: 'Roboto Slab',
+                  fontSize: 24,
+                  color: Colors.white
+              ),
+            ),
+          ),
+          backgroundColor: Color.fromRGBO(217, 213, 213, 1),
+          body: SingleChildScrollView(
+            padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
+            child: Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
                   inputLabel('Enter OTP'),
                   input('Enter OTP', false, otpController),
                   Builder(
@@ -142,6 +218,7 @@ class _InitiateResetState extends State<InitiateReset> {
 
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -169,6 +246,8 @@ class _InitiateResetState extends State<InitiateReset> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
+                  inputLabel('E-Mail'),
+                  input('Email', true, emailController),
                   inputLabel('Enter Password'),
                   input('Password', true, passwordController),
                   inputLabel('Confirm Password'),

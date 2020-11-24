@@ -43,8 +43,7 @@ class _SignInState extends State<SignIn> {
 
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-
+  TextEditingController mobileNumberController = TextEditingController();
 
   void _showDialog() {
     showDialog(
@@ -137,9 +136,9 @@ class _SignInState extends State<SignIn> {
     final databaseReference = FirebaseDatabase.instance.reference().child(uniqueId.text);
     print(passwordController.text);
     databaseReference.once().then((DataSnapshot snapshot) {
-      print(snapshot.value['password']);
+      print(snapshot.value['Password']);
       try {
-        if((passwordController.text ==  snapshot.value['password']) && emailController.text == snapshot.value['email'])
+        if((passwordController.text ==  snapshot.value['Password']) && (mobileNumberController.text ==  snapshot.value['Mobile Number'].toString()))
           Navigator.push(context,
               MaterialPageRoute(
                   builder: (context) => BasicInformation()
@@ -225,7 +224,7 @@ class _SignInState extends State<SignIn> {
                 children: <Widget>[
                   Container(child: Image.asset('images/tyre.jpg')),
                   input('UNIQUE ID', false, usernameController),
-                  input('E-MAIL', false, emailController),
+                  input('REGISTERED MOBILE', false, mobileNumberController),
                   input('PASSWORD', true, passwordController),
                   CheckboxListTile(
                     value: _value,
@@ -249,7 +248,7 @@ class _SignInState extends State<SignIn> {
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(
-                                builder: (context) => PasswordReset()
+                                builder: (context) => MobileInput()
                             )
                         );
                       },
@@ -279,7 +278,7 @@ class _SignInState extends State<SignIn> {
                           builder: (context) => FlatButton(
                             splashColor: Colors.white30,
                             onPressed: () {
-                              checkData(usernameController, emailController);
+                              checkData(usernameController, mobileNumberController);
                             },
                             child: Card(
                                 color: Color.fromRGBO(179, 172, 172, 1),

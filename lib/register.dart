@@ -15,7 +15,7 @@ class _RegisterState extends State<Register> {
   final databaseReference = FirebaseDatabase.instance.reference();
   TextEditingController uniqueIdController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
+  TextEditingController mobileNumberController = TextEditingController();
   TextEditingController passwordCheckController = TextEditingController();
 
   Container input(String inp, bool obscurity, TextEditingController controllerName) {
@@ -96,8 +96,8 @@ class _RegisterState extends State<Register> {
                 children: <Widget>[
                   inputLabel('UNIQUE ID'),
                   input('UNIQUE ID', false, uniqueIdController),
-                  inputLabel("EMAIL"),
-                  input('E-mail', false, emailController),
+                  inputLabel("MOBILE NUMBER"),
+                  input('MOBILE NUMBER', false, mobileNumberController),
                   inputLabel("PASSWORD"),
                   input('PASSWORD', true, passwordController),
                   inputLabel("CONFIRM PASSWORD"),
@@ -109,8 +109,8 @@ class _RegisterState extends State<Register> {
                       onPressed: () {
                         String uniqueId = uniqueIdController.text;
                         databaseReference.child(uniqueId).set({
-                            'email': emailController.text,
-                            'password': passwordController.text,
+                            'Mobile Number': mobileNumberController.text,
+                            'Password': passwordController.text,
                           });
                         Navigator.push(context,
                             MaterialPageRoute(
