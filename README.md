@@ -1,9 +1,8 @@
-# utonenergia
+# Uton Energia
 
-A new Flutter application.
+A mobile application for Uton Energia to run both on Android and iOS. This application was built using Flutter for simplicity and diversity. This application keeps track of all the sensory information from your vehicle as well as your subscription information to the vehicle.
 
-## Getting Started
-
+## Acknowledgments/Resources
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
